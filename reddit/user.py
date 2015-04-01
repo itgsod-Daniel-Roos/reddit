@@ -4,6 +4,8 @@ import reddit
 
 url_me = "https://oauth.reddit.com/api/v1/me"
 url_about = "https://oauth.reddit.com/api/v1/user/{username}/about"
+url_karma = "https://oauth.reddit.com/api/v1/me/karma"
+url_submit = "https://oauth.reddit.com/api/submit"
 
 class User(object):
 
@@ -13,7 +15,19 @@ class User(object):
 
     def me (self):
 
-        pprint(reddit.client.request(url_me))
+        return reddit.client.request(url_me)
 
+    def link_karma (self):
 
+        return reddit.client.request(url_me)['link_karma']
+
+    def karma_per_reddit (self):
+
+        return reddit.client.request(url_karma)
+
+    def submit(self, subreddit, kind, title, text):
+
+        data = {'sr': subreddit, 'kind': kind, 'title': title, 'text': text}
+
+        return reddit.client.request_data(url_submit, data)
 

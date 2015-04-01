@@ -2,19 +2,12 @@ from reddit  import client
 from reddit.user import User
 from reddit.reddits import Subreddit
 
-bojohan = client.login('bojohan')
+print client.login('playing_blindfolded').submit('test', 'self', 'textpost2', 'helo redit')
 
-bojohan.me()
+#print(daniel.karma_per_reddit())
 
+#print(Subreddit('listofsubreddits').wiki_contrib())
 
-# python = Subreddit("python")
-#
-# python.hot()
+#print(Subreddit('pics').mod_list())
 
-
-
-
-
-
-
-
+#python.hot()

@@ -69,3 +69,11 @@ class Client():
         print response.headers
 
         return response.json()
+
+    def request_data(self, uri, data):
+
+        headers = {"User-Agent": config['reddit_boot']}
+        headers['Authorization'] = 'bearer %s' % self.access_token
+
+        response = requests.post(uri, data=data, headers=headers)
+        return response.json()
