@@ -42,7 +42,6 @@ class Client():
         headers = {"User-Agent": config['reddit_boot']}
 
 
-
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         data = {'grant_type': 'password' ,'username': reddit_id, 'password': passwd}
 

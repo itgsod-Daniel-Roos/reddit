@@ -1,13 +1,20 @@
 from reddit  import client
 from reddit.user import User
 from reddit.reddits import Subreddit
+daniel = client.login("playing_blindfolded")
 
-print client.login('playing_blindfolded').submit('test', 'self', 'textpost2', 'helo redit')
+#print daniel.submit('danielsbot', 'self', 'test', 'test_text')
+
+#print client.login('playing_blindfolded').comment('t3_32nyda', 'testcomment')
 
 #print(daniel.karma_per_reddit())
 
-#print(Subreddit('listofsubreddits').wiki_contrib())
+usage_info = Subreddit('danielsbot').hot()['data']['children']
 
-#print(Subreddit('pics').mod_list())
+for i in range (0, 24):
+    if usage_info[i]['data']['title'] == 'test':
+        daniel.comment(usage_info[i]['data']['name'], 'selftext = ' + usage_info[i]['data']['selftext'])
+
+#print (Subreddit('danielsbot').hot()['data']['children'][0]['data']['selftext'])
 
 #python.hot()

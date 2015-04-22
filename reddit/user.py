@@ -6,6 +6,7 @@ url_me = "https://oauth.reddit.com/api/v1/me"
 url_about = "https://oauth.reddit.com/api/v1/user/{username}/about"
 url_karma = "https://oauth.reddit.com/api/v1/me/karma"
 url_submit = "https://oauth.reddit.com/api/submit"
+url_comment = "https://oauth.reddit.com/api/comment"
 
 class User(object):
 
@@ -31,3 +32,8 @@ class User(object):
 
         return reddit.client.request_data(url_submit, data)
 
+    def comment(self, id, text):
+
+        data = {'thing_id': id, 'text': text}
+
+        return reddit.client.request_data(url_comment, data)
