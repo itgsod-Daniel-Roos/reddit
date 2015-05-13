@@ -8,7 +8,7 @@ url_karma = "https://oauth.reddit.com/api/v1/me/karma"
 url_submit = "https://oauth.reddit.com/api/submit"
 url_comment = "https://oauth.reddit.com/api/comment"
 
-class User(object):
+class User(object):                         #Class for user actions.
 
     def __init__(self, reddit_id):
         self.id = reddit_id

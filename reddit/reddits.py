@@ -9,7 +9,7 @@ url_mod_list = "https://oauth.reddit.com/r/{subreddit}/about/moderators"
 
 comment_url = "https://oauth.reddit.com/r/{subreddit}/comments/{article}"
 
-class Subreddit(object):
+class Subreddit(object):                    #Class for checking info in subreddits.
 
     def __init__(self, subreddit):
         self.subreddit = subreddit
@@ -24,7 +24,7 @@ class Subreddit(object):
 
         return reddit.client.request(url_mod_list.format(subreddit=self.subreddit))
 
-class Comments(object):
+class Comments(object):                     #Class for checking comments.
 
     def __init__(self, subreddit, article):
         self.subreddit = subreddit
@@ -33,7 +33,7 @@ class Comments(object):
     def hot(self):
         return reddit.client.request(comment_url.format(subreddit=self.subreddit, article=self.article))
 
-    def search_hot(self, user, subreddit, keyword, fullname, reply):
+    def search_hot(self, user, subreddit, keyword, fullname, reply):        #Failed code, ignore.
         info_dic = (Comments(subreddit, fullname).hot()[1]['data']['children'])
         for i in range (0, len(info_dic)):
             if info_dic[i]['data']['body'] == keyword:

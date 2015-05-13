@@ -3,7 +3,7 @@ import keyring
 import requests
 from pprint import pprint
 import sys
-from reddit.xratelimit import Xrate
+from xratelimit import *
 
 from reddit import config
 from reddit.user import User
@@ -57,21 +57,22 @@ class Client():
 
         return User(reddit_id)
 
-    def request(self,uri):
+    def request(self,uri):                      #Data request without special info.
 
         headers = {"User-Agent": config['reddit_boot']}
         headers['Authorization'] = 'bearer %s' % self.access_token
 
         response = requests.get(uri,headers=headers)
 
-        #print Xrate().check(response.headers)
-        print Xrate().check(response.headers)
+        print Xrate().check(response.headers)   #Prints Xrate-check. (Detailed in xratelimit.py)
         return response.json()
 
-    def request_data(self, uri, data):
-
+    def request_data(self, uri, data):          #Data request with more info supplied (E.g. subreddit).
+                                                #(Needed for User.comment & User.submit)
         headers = {"User-Agent": config['reddit_boot']}
         headers['Authorization'] = 'bearer %s' % self.access_token
 
         response = requests.post(uri, data=data, headers=headers)
+
+        print Xrate().check(response.headers)   #Prints Xrate-check. (Detailed in xratelimit.py)
         return response.json()
