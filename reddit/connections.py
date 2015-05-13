@@ -3,6 +3,7 @@ import keyring
 import requests
 from pprint import pprint
 import sys
+from reddit.xratelimit import Xrate
 
 from reddit import config
 from reddit.user import User
@@ -10,7 +11,6 @@ from reddit.user import User
 app_name = config['app_name']
 
 token_url = "https://www.reddit.com/api/v1/access_token"
-
 
 class Client():
 
@@ -64,9 +64,8 @@ class Client():
 
         response = requests.get(uri,headers=headers)
 
-
-        print response.headers
-
+        #print Xrate().check(response.headers)
+        print Xrate().check(response.headers)
         return response.json()
 
     def request_data(self, uri, data):
